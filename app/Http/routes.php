@@ -37,6 +37,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('addkala','mcontroller@addkalapost');
     Route::auth();
     Route::delete('/del/{kala}','mcontroller@del');
+    Route::delete('/delcart/{kala}','mcontroller@delcart');
     Route::get('/edit/{kala}','mcontroller@geteditpage');
     Route::post('/editkala/{kala}','mcontroller@editkala');
     Route::post('/addinbasket/{kala}','mcontroller@addinbasket');

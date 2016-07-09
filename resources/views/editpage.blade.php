@@ -65,7 +65,7 @@ $details = $kala->details;
                             <div  class="row col-md-12">
                                 <label  class="col-md-2 control-label">Product Description</label>
                                 <div class="unselectable col-md-10">
-                                    <p class="col-md-9 form-control conttext" contenteditable="true" style="width:100%;  height:100%;">
+                                    <p class="col-md-9 form-control conttext" name='details' contenteditable="true" style="width:100%;  height:100%;">
 
                                         {!! $details !!}
 

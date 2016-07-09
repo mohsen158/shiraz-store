@@ -32,13 +32,19 @@ class mcontroller extends Controller
    $kala->delete();
         return back();
     }
+     public function delcart(Request $request,Kala $kala)
+    {
+  request()->user()->kalas()->detach($kala->id);
+  //     $kala->users()->detach();
+          return back();
+    }
     public function addkalapost(Request $request)
     {
         
          $rules = [
         'name' => 'required|max:255',
         'details' => 'required',
-       'photo' => 'max:1024',
+       'photo' => 'max:1024|required',
     ];
     $v = Validator::make($request->all(), $rules);
     if($v->fails()){
@@ -61,7 +67,7 @@ class mcontroller extends Controller
            $kala->pic_name,
             file_get_contents($request->file('photo')->getRealPath())
         );
-     return redirect()->back()->with('message', 'The post successfully inserted.');
+     return redirect ('/');
     }
         
         
@@ -94,7 +100,7 @@ class mcontroller extends Controller
         //($kala->details);
         $kala->name=$new->name;
         $kala->details=$request->details;
-        $kala->pic_name=$new->pic_name;
+        
         $kala->save();
         if ($request->hasFile('photo')) {
             $file = $request->file('photo');
@@ -111,6 +117,7 @@ class mcontroller extends Controller
             $kala->save();
             return redirect('/');
         }
+           return redirect('/');
     }
     public function addinbasket(Request $request , Kala $kala)
     {
